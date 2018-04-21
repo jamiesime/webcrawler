@@ -18,5 +18,6 @@ namespace WebCrawlerTest
             Assert.AreEqual("Home - BBC News", testPage.title);
             Assert.AreEqual(true, testPage.visited);
         }
+
     }
 }

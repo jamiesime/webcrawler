@@ -6,7 +6,19 @@ using System.Threading.Tasks;
 
 namespace SingleDomainWebCrawler
 {
-    class CSVOutput
+    public class CSVOutput
     {
+        public string path;
+        public StringBuilder content;
+
+        public CSVOutput(string path)
+        {
+            this.path = path;
+        }
+
+        public void appendNewEntry(string url, string title, string statusCode)
+        {
+            content.AppendLine(url + "," + title + "," + statusCode);
+        }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using SingleDomainWebCrawler;
 
 namespace WebCrawlerTest
 {
@@ -7,8 +8,23 @@ namespace WebCrawlerTest
     public class CSVOutputTest
     {
         [TestMethod]
-        public void TestMethod1()
+        public void getPropertiesTest()
         {
+            //Arrange
+            CSVOutput newCSV = new CSVOutput("C:/Users/Jamie/Desktop/testCSV.csv");
+            //Assert
+            Assert.AreEqual("C:/Users/Jamie/Desktop/testCSV.csv", newCSV.path);
+        }
+
+        [TestMethod]
+        public void appendEntryTest()
+        {
+            //Arrange
+            CSVOutput newCSV = new CSVOutput("C:/Users/Jamie/Desktop/testCSV.csv");
+            //Act
+            newCSV.appendNewEntry("URL", "Title", "Status Code");
+            //Assert
+            Assert.AreEqual("URL, Title, Status Code", newCSV.content.ToString());
         }
     }
 }
