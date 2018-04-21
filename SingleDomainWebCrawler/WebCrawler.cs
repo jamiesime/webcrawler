@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SingleDomainWebCrawler
 {
-    class WebCrawler
+    public class WebCrawler
     {
 
         public string root;
