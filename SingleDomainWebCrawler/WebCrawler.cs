@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace SingleDomainWebCrawler
 {
     [TestClass]
-    public class UnitTest1
+    public class WebCrawler
     {
         [TestMethod]
         public void TestMethod1()

@@ -1,0 +1,7 @@
+C:\Users\Jamie\Desktop\Repos\SingleDomainWebCrawler\WebCrawlerTest\bin\Debug\WebCrawlerTest.dll
+C:\Users\Jamie\Desktop\Repos\SingleDomainWebCrawler\WebCrawlerTest\bin\Debug\WebCrawlerTest.pdb
+C:\Users\Jamie\Desktop\Repos\SingleDomainWebCrawler\WebCrawlerTest\bin\Debug\SingleDomainWebCrawler.dll
+C:\Users\Jamie\Desktop\Repos\SingleDomainWebCrawler\WebCrawlerTest\bin\Debug\SingleDomainWebCrawler.pdb
+C:\Users\Jamie\Desktop\Repos\SingleDomainWebCrawler\WebCrawlerTest\obj\Debug\WebCrawlerTest.csprojResolveAssemblyReference.cache
+C:\Users\Jamie\Desktop\Repos\SingleDomainWebCrawler\WebCrawlerTest\obj\Debug\WebCrawlerTest.dll
+C:\Users\Jamie\Desktop\Repos\SingleDomainWebCrawler\WebCrawlerTest\obj\Debug\WebCrawlerTest.pdb
