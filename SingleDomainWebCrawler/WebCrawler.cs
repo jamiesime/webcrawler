@@ -12,9 +12,9 @@ namespace SingleDomainWebCrawler
 
         public string root;
         public int maxDepth;
-        public Queue<Webpage> pageQueue;
-        public List<string> visitedUrls;
-        public CSVOutput csvFile;
+        public Queue<string> pageQueue = new Queue<string>();
+        public List<string> visitedUrls = new List<string>();
+        public CSVOutput csvFile = new CSVOutput("C:/");
 
         public WebCrawler(string root, int maxDepth)
         {
@@ -29,10 +29,13 @@ namespace SingleDomainWebCrawler
             return doc;
         }
 
-        //public List<string> scrapeLinks(HtmlDocument doc)
-        //{
-
-        //}
+        public void scrapeLinksToQueue(HtmlDocument doc)
+        {
+            foreach(HtmlNode link in doc.DocumentNode.SelectNodes("//a[@href]"))
+            {
+                pageQueue.Enqueue(link.ToString());
+            }
+        }
 
     }
 }

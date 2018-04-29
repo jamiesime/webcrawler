@@ -29,5 +29,17 @@ namespace WebCrawlerTest
             //Assert
             Assert.AreEqual("Home - BBC News", newDoc.DocumentNode.SelectSingleNode("//title").InnerText.ToString());
         }
+
+        [TestMethod]
+        public void scrapeLinksToQueueTest()
+        {
+            //Arrange
+            WebCrawler crawler = new WebCrawler("http://www.bbc.co.uk/news", 5);
+            //Act
+            HtmlDocument doc = crawler.retrievePage(crawler.root);
+            crawler.scrapeLinksToQueue(doc);
+            //Assert
+            Assert.AreEqual(299, crawler.pageQueue.Count);
+        }
     }
 }
