@@ -9,7 +9,7 @@ namespace SingleDomainWebCrawler
     public class CSVOutput
     {
         public string path;
-        public StringBuilder content;
+        public StringBuilder content = new StringBuilder();
 
         public CSVOutput(string path)
         {

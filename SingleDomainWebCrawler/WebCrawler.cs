@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using HtmlAgilityPack;
 
 namespace SingleDomainWebCrawler
 {
@@ -20,6 +21,18 @@ namespace SingleDomainWebCrawler
             this.root = root;
             this.maxDepth = maxDepth;
         }
+
+        public HtmlDocument retrievePage(string url)
+        {
+            HtmlWeb web = new HtmlWeb();
+            HtmlDocument doc = web.Load(@"" + url);
+            return doc;
+        }
+
+        //public List<string> scrapeLinks(HtmlDocument doc)
+        //{
+
+        //}
 
     }
 }

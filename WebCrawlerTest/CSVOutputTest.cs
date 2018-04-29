@@ -20,11 +20,11 @@ namespace WebCrawlerTest
         public void appendEntryTest()
         {
             //Arrange
-            CSVOutput newCSV = new CSVOutput("C:/Users/Jamie/Desktop/testCSV.csv");
+            CSVOutput CSV = new CSVOutput("C:/Users/Jamie/Desktop/testCSV.csv");
             //Act
-            newCSV.appendNewEntry("URL", "Title", "Status Code");
+            CSV.appendNewEntry("URL", "Title", "Status Code");
             //Assert
-            Assert.AreEqual("URL, Title, Status Code", newCSV.content.ToString());
+            Assert.AreEqual("URL,Title,Status Code\r\n", CSV.content.ToString());
         }
     }
 }
