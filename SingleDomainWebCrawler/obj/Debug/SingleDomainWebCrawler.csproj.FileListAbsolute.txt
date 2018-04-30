@@ -1,9 +1,9 @@
-C:\Users\Jamie\Desktop\Repos\SingleDomainWebCrawler\SingleDomainWebCrawler\bin\Debug\SingleDomainWebCrawler.dll
 C:\Users\Jamie\Desktop\Repos\SingleDomainWebCrawler\SingleDomainWebCrawler\bin\Debug\SingleDomainWebCrawler.pdb
 C:\Users\Jamie\Desktop\Repos\SingleDomainWebCrawler\SingleDomainWebCrawler\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
-C:\Users\Jamie\Desktop\Repos\SingleDomainWebCrawler\SingleDomainWebCrawler\obj\Debug\SingleDomainWebCrawler.csprojResolveAssemblyReference.cache
-C:\Users\Jamie\Desktop\Repos\SingleDomainWebCrawler\SingleDomainWebCrawler\obj\Debug\SingleDomainWebCrawler.dll
 C:\Users\Jamie\Desktop\Repos\SingleDomainWebCrawler\SingleDomainWebCrawler\obj\Debug\SingleDomainWebCrawler.pdb
 C:\Users\Jamie\Desktop\Repos\SingleDomainWebCrawler\SingleDomainWebCrawler\bin\Debug\HtmlAgilityPack.dll
 C:\Users\Jamie\Desktop\Repos\SingleDomainWebCrawler\SingleDomainWebCrawler\bin\Debug\HtmlAgilityPack.pdb
 C:\Users\Jamie\Desktop\Repos\SingleDomainWebCrawler\SingleDomainWebCrawler\bin\Debug\HtmlAgilityPack.xml
+C:\Users\Jamie\Desktop\Repos\SingleDomainWebCrawler\SingleDomainWebCrawler\bin\Debug\SingleDomainWebCrawler.exe
+C:\Users\Jamie\Desktop\Repos\SingleDomainWebCrawler\SingleDomainWebCrawler\obj\Debug\SingleDomainWebCrawler.exe
+C:\Users\Jamie\Desktop\Repos\SingleDomainWebCrawler\SingleDomainWebCrawler\obj\Debug\SingleDomainWebCrawler.csprojResolveAssemblyReference.cache

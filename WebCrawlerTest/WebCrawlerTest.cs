@@ -37,9 +37,10 @@ namespace WebCrawlerTest
             WebCrawler crawler = new WebCrawler("http://www.bbc.co.uk/news", 5);
             //Act
             HtmlDocument doc = crawler.retrievePage(crawler.root);
-            crawler.scrapeLinksToQueue(doc);
+            crawler.scrapeLinksToQueue(crawler.currentDepthQueue, doc);
             //Assert
-            Assert.AreEqual(299, crawler.pageQueue.Count);
+            Assert.AreEqual(305, crawler.currentDepthQueue.Count);
+            Assert.AreEqual("https://www.bbc.co.uk", crawler.currentDepthQueue.Peek());
         }
     }
 }

@@ -1,6 +1,5 @@
 C:\Users\Jamie\Desktop\Repos\SingleDomainWebCrawler\WebCrawlerTest\bin\Debug\WebCrawlerTest.dll
 C:\Users\Jamie\Desktop\Repos\SingleDomainWebCrawler\WebCrawlerTest\bin\Debug\WebCrawlerTest.pdb
-C:\Users\Jamie\Desktop\Repos\SingleDomainWebCrawler\WebCrawlerTest\bin\Debug\SingleDomainWebCrawler.dll
 C:\Users\Jamie\Desktop\Repos\SingleDomainWebCrawler\WebCrawlerTest\bin\Debug\SingleDomainWebCrawler.pdb
 C:\Users\Jamie\Desktop\Repos\SingleDomainWebCrawler\WebCrawlerTest\obj\Debug\WebCrawlerTest.csprojResolveAssemblyReference.cache
 C:\Users\Jamie\Desktop\Repos\SingleDomainWebCrawler\WebCrawlerTest\obj\Debug\WebCrawlerTest.dll
@@ -8,3 +7,4 @@ C:\Users\Jamie\Desktop\Repos\SingleDomainWebCrawler\WebCrawlerTest\obj\Debug\Web
 C:\Users\Jamie\Desktop\Repos\SingleDomainWebCrawler\WebCrawlerTest\bin\Debug\HtmlAgilityPack.dll
 C:\Users\Jamie\Desktop\Repos\SingleDomainWebCrawler\WebCrawlerTest\bin\Debug\HtmlAgilityPack.pdb
 C:\Users\Jamie\Desktop\Repos\SingleDomainWebCrawler\WebCrawlerTest\bin\Debug\HtmlAgilityPack.xml
+C:\Users\Jamie\Desktop\Repos\SingleDomainWebCrawler\WebCrawlerTest\bin\Debug\SingleDomainWebCrawler.exe
