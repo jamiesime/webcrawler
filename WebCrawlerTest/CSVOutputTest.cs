@@ -24,7 +24,7 @@ namespace WebCrawlerTest
             //Act
             CSV.appendNewEntry("URL", "Title", "Status Code");
             //Assert
-            Assert.AreEqual("URL,Title,Status Code\r\n", CSV.content.ToString());
+            Assert.AreEqual("Title,\"URL\",Status Code\r\n", CSV.content.ToString());
         }
     }
 }

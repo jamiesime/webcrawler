@@ -58,6 +58,7 @@ namespace SingleDomainWebCrawler
                     return doc;
                 }
             }
+            visitedUrls.Add(url);
             return doc;
         }
 
@@ -148,7 +149,6 @@ namespace SingleDomainWebCrawler
                             {
                                 scrapeLinksToQueue(nextDepthQueue, currentDoc);
                                 addOKInfoToOutput(currentDoc);
-                                visitedUrls.Add(url);
                             }
                             else
                             {
