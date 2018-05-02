@@ -62,7 +62,6 @@
     <Compile Include="Program.cs" />
     <Compile Include="CSVOutput.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Webpage.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

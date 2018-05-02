@@ -58,7 +58,6 @@
   </Choose>
   <ItemGroup>
     <Compile Include="CSVOutputTest.cs" />
-    <Compile Include="WebpageTest.cs" />
     <Compile Include="WebCrawlerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
