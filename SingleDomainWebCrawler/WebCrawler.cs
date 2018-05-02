@@ -16,6 +16,8 @@ namespace SingleDomainWebCrawler
         public int maxDepth;
         public Int32 pagesCrawled;
 
+        public HtmlWeb web;
+
         public Queue<string> currentDepthQueue = new Queue<string>();
         public Queue<string> nextDepthQueue = new Queue<string>();
 
@@ -32,9 +34,10 @@ namespace SingleDomainWebCrawler
         public void performCrawl()
         {
             Console.WriteLine("Crawling...");
-            HtmlDocument currentDoc = retrievePage(root);
+            addHeadersToOutput();
+            HtmlDocument currentDoc = retrieveURL(root);
             scrapeLinksToQueue(currentDepthQueue, currentDoc);
-            addInfoToOutput(currentDoc);
+            addOKInfoToOutput(currentDoc);
             for (int i = 0; i < maxDepth; i++)
             {
                 while (currentDepthQueue.Any())
@@ -42,39 +45,60 @@ namespace SingleDomainWebCrawler
                     string url = currentDepthQueue.Dequeue();
                     if (!visitedUrls.Contains(url))
                     {
-                        try
-                        {
-                            currentDoc = retrievePage(url);
-                            if (currentStatCode == "OK")
+                            currentStatCode = null;
+                            currentDoc = retrieveURL(url);
+                            if (verifyResponse(url, currentDoc))
                             {
                                 scrapeLinksToQueue(nextDepthQueue, currentDoc);
-                                addInfoToOutput(currentDoc);
+                                addOKInfoToOutput(currentDoc);
+                                visitedUrls.Add(url);
                             }
-                        }
-                        catch(Exception)
-                        {
-                            continue;
-                        }
+                            else
+                            {
+                                addErrorInfoToOutput(url);
+                            }
                     }
                     Console.Write("\r Pages crawled: " + pagesCrawled);
                 }
-                foreach(string link in nextDepthQueue)
-                {
-                    currentDepthQueue.Enqueue(link);
-                }
+                currentDepthQueue = nextDepthQueue;
                 i++;
             }
             endAndOutput();
         }
 
-        public HtmlDocument retrievePage(string url)
+        public HtmlDocument retrieveURL(string url)
         {
             currentUrl = url;
-            HtmlWeb web = new HtmlWeb();
-            HtmlDocument doc = web.Load(@"" + url);
+            web = new HtmlWeb();
+            try
+            {
+                HtmlDocument doc = web.Load(@"" + url);
+                return doc;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        public bool verifyResponse(string url, HtmlDocument doc)
+        {
             currentStatCode = web.StatusCode.ToString();
-            visitedUrls.Add(url);
-            return doc;
+            if(currentStatCode == "OK" && doc != null)
+            {
+                return true;
+            }
+            if (tryDomainPrefix())
+            {
+                return true;
+            }
+            return false;
+           
+        }
+
+        public bool tryDomainPrefix()
+        {
+            return false;
         }
 
         public void scrapeLinksToQueue(Queue<string> thisQueue, HtmlDocument doc)
@@ -89,7 +113,17 @@ namespace SingleDomainWebCrawler
             }
         }
 
-        public void addInfoToOutput(HtmlDocument doc)
+        public void addHeadersToOutput()
+        {
+            csvFile.appendNewEntry("Title", "URL", "Status Code");
+        }
+
+        public void addErrorInfoToOutput(string url)
+        {
+            csvFile.appendNewEntry("Title unknown", url, currentStatCode);
+        }
+
+        public void addOKInfoToOutput(HtmlDocument doc)
         {
             string title = doc.DocumentNode.SelectSingleNode("//title").InnerText.ToString();
             csvFile.appendNewEntry(title, currentUrl, currentStatCode);
