@@ -25,6 +25,16 @@ namespace SingleDomainWebCrawler
 
         public CSVOutput csvFile = new CSVOutput("C:/Users/Jamie/Desktop");
 
+        public WebCrawler()
+        {
+
+        }
+
+        public WebCrawler(string root, int depth)
+        {
+            this.root = root;
+            this.maxDepth = depth;
+        }
 
 
         public HtmlDocument retrieveURL(string url)
