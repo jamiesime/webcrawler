@@ -56,7 +56,7 @@ namespace SingleDomainWebCrawler
                             continue;
                         }
                     }
-                    Console.Write("\r{0}% Pages crawled: " + pagesCrawled);
+                    Console.Write("\r Pages crawled: " + pagesCrawled);
                 }
                 foreach(string link in nextDepthQueue)
                 {
@@ -91,7 +91,7 @@ namespace SingleDomainWebCrawler
 
         public void addInfoToOutput(HtmlDocument doc)
         {
-            string title = doc.DocumentNode.SelectSingleNode("//title").ToString();
+            string title = doc.DocumentNode.SelectSingleNode("//title").InnerText.ToString();
             csvFile.appendNewEntry(title, currentUrl, currentStatCode);
             pagesCrawled++;
         }

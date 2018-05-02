@@ -31,6 +31,18 @@ namespace WebCrawlerTest
         }
 
         [TestMethod]
+        public void addVisitedLinksTest()
+        {
+            //Arrange
+            WebCrawler crawler = new WebCrawler("http://www.bbc.co.uk/news", 5);
+            //Act
+            HtmlDocument newDoc = crawler.retrievePage(crawler.root);
+            //Assert
+            Assert.AreEqual(1, crawler.visitedUrls.Count);
+            Assert.AreEqual("http://www.bbc.co.uk/news", crawler.visitedUrls[0]);
+        }
+
+        [TestMethod]
         public void scrapeLinksToQueueTest()
         {
             //Arrange
@@ -39,8 +51,20 @@ namespace WebCrawlerTest
             HtmlDocument doc = crawler.retrievePage(crawler.root);
             crawler.scrapeLinksToQueue(crawler.currentDepthQueue, doc);
             //Assert
-            Assert.AreEqual(305, crawler.currentDepthQueue.Count);
+            Assert.IsTrue (crawler.currentDepthQueue.Count > 0);
             Assert.AreEqual("https://www.bbc.co.uk", crawler.currentDepthQueue.Peek());
+        }
+
+        [TestMethod]
+        public void addInfoToOutputTest()
+        {
+            //Arrange
+            WebCrawler crawler = new WebCrawler("http://www.bbc.co.uk/news", 5);
+            //Act
+            HtmlDocument doc = crawler.retrievePage(crawler.root);
+            crawler.addInfoToOutput(doc);
+            //Assert
+            Assert.AreNotEqual("", crawler.csvFile.content.ToString());
         }
     }
 }
