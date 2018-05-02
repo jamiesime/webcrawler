@@ -123,7 +123,7 @@ namespace SingleDomainWebCrawler
         public void addOKInfoToOutput(HtmlDocument doc)
         {
             string title = doc.DocumentNode.SelectSingleNode("//title").InnerText.ToString();
-            csvFile.appendNewEntry($" \"{title}\" ", currentUrl, currentStatCode);
+            csvFile.appendNewEntry(title, currentUrl, currentStatCode);
             pagesCrawled++;
         }
 

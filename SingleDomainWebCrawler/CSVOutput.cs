@@ -17,9 +17,9 @@ namespace SingleDomainWebCrawler
             this.path = path;
         }
 
-        public void appendNewEntry(string url, string title, string statusCode)
+        public void appendNewEntry(string title, string url, string statusCode)
         {
-            content.AppendLine(url + "," + title + "," + statusCode);
+            content.AppendLine(url + "," + "\"" + title + "\"" + "," + statusCode);
         }
 
         public void save()
