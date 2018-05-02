@@ -70,15 +70,21 @@ namespace SingleDomainWebCrawler
         {
             currentUrl = url;
             web = new HtmlWeb();
+            HtmlDocument doc = new HtmlDocument();
             try
             {
-                HtmlDocument doc = web.Load(@"" + url);
-                return doc;
+               doc = web.Load(@"" + currentUrl);
             }
             catch (Exception)
             {
+                currentUrl = root + url;
+                doc = web.Load(@"" + currentUrl);
+            }
+            if(doc.DocumentNode.ChildNodes.Count == 0 || doc == null)
+            {
                 return null;
             }
+            return doc;
         }
 
         public bool verifyResponse(string url, HtmlDocument doc)
@@ -88,17 +94,8 @@ namespace SingleDomainWebCrawler
             {
                 return true;
             }
-            if (tryDomainPrefix())
-            {
-                return true;
-            }
             return false;
            
-        }
-
-        public bool tryDomainPrefix()
-        {
-            return false;
         }
 
         public void scrapeLinksToQueue(Queue<string> thisQueue, HtmlDocument doc)
