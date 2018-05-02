@@ -11,8 +11,13 @@ namespace SingleDomainWebCrawler
     {
         static void Main(string[] args)
         {
-            WebCrawler crawler = new WebCrawler("https://www.sfdebris.com/", 1);
+
+            WebCrawler crawler = new WebCrawler();
+            crawler.getUserInput();
+
             Console.WriteLine("Enter any key to begin crawl.");
+            Console.ReadLine();
+
             crawler.performCrawl();
         }
     }

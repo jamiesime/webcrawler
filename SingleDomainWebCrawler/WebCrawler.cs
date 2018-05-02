@@ -25,66 +25,44 @@ namespace SingleDomainWebCrawler
 
         public CSVOutput csvFile = new CSVOutput("C:/Users/Jamie/Desktop");
 
-        public WebCrawler(string root, int maxDepth)
-        {
-            this.root = root;
-            this.maxDepth = maxDepth;
-        }
 
-        public void performCrawl()
-        {
-            Console.WriteLine("Crawling...");
-            addHeadersToOutput();
-            HtmlDocument currentDoc = retrieveURL(root);
-            scrapeLinksToQueue(currentDepthQueue, currentDoc);
-            addOKInfoToOutput(currentDoc);
-            for (int i = 0; i < maxDepth; i++)
-            {
-                while (currentDepthQueue.Any())
-                {
-                    string url = currentDepthQueue.Dequeue();
-                    if (!visitedUrls.Contains(url))
-                    {
-                            currentStatCode = null;
-                            currentDoc = retrieveURL(url);
-                            if (verifyResponse(url, currentDoc))
-                            {
-                                scrapeLinksToQueue(nextDepthQueue, currentDoc);
-                                addOKInfoToOutput(currentDoc);
-                                visitedUrls.Add(url);
-                            }
-                            else
-                            {
-                                addErrorInfoToOutput(url);
-                            }
-                    }
-                    Console.Write("\r Pages crawled: " + pagesCrawled);
-                }
-                currentDepthQueue = nextDepthQueue;
-                i++;
-            }
-            endAndOutput();
-        }
 
         public HtmlDocument retrieveURL(string url)
         {
             currentUrl = url;
             web = new HtmlWeb();
-            HtmlDocument doc = new HtmlDocument();
+            HtmlDocument doc = null;
             try
             {
-               doc = web.Load(@"" + currentUrl);
+                doc = web.Load(@"" + currentUrl);
             }
             catch (Exception)
             {
-                currentUrl = root + url;
-                doc = web.Load(@"" + currentUrl);
+                doc = tryDomainPrefix(currentUrl);
+                if (doc == null || doc.DocumentNode.ChildNodes.Count == 0)
+                {
+                    return null;
+                }
+                else
+                {
+                    return doc;
+                }
             }
-            if(doc.DocumentNode.ChildNodes.Count == 0 || doc == null)
+            return doc;
+        }
+
+        public HtmlDocument tryDomainPrefix(string url)
+        {
+            currentUrl = root + url;
+            try
+            {
+                HtmlDocument doc = web.Load(@"" + currentUrl);
+                return doc;
+            }
+            catch (Exception)
             {
                 return null;
             }
-            return doc;
         }
 
         public bool verifyResponse(string url, HtmlDocument doc)
@@ -130,10 +108,86 @@ namespace SingleDomainWebCrawler
         public void endAndOutput()
         {
             csvFile.save();
-            Console.WriteLine("Crawl completed at depth of " + maxDepth + ".");
+            Console.WriteLine("\nCrawl completed at depth of " + maxDepth + ".");
             Console.WriteLine("CSV Output has been saved at " + csvFile.path);
             Console.WriteLine("Press any key to close.");
             Console.ReadLine();
+        }
+
+
+        public void performCrawl()
+        {
+            Console.WriteLine("Crawling...");
+            addHeadersToOutput();
+            HtmlDocument currentDoc = retrieveURL(root);
+            if (verifyResponse(currentUrl, currentDoc))
+            {
+                scrapeLinksToQueue(currentDepthQueue, currentDoc);
+                addOKInfoToOutput(currentDoc);
+
+                for (int i = 0; i < maxDepth; i++)
+                {
+                    while (currentDepthQueue.Any())
+                    {
+                        string url = currentDepthQueue.Dequeue();
+                        if (!visitedUrls.Contains(url))
+                        {
+                            currentStatCode = null;
+                            currentDoc = retrieveURL(url);
+                            if (verifyResponse(url, currentDoc))
+                            {
+                                scrapeLinksToQueue(nextDepthQueue, currentDoc);
+                                addOKInfoToOutput(currentDoc);
+                                visitedUrls.Add(url);
+                            }
+                            else
+                            {
+                                addErrorInfoToOutput(url);
+                            }
+                        }
+                        Console.Write("\r Pages crawled: " + pagesCrawled);
+                    }
+                    currentDepthQueue = nextDepthQueue;
+                    i++;
+                }
+                endAndOutput();
+            }
+            else
+            {
+                Console.WriteLine("Not a valid URL. Press any key to close.");
+                Console.ReadLine();
+            }
+        }
+
+        public void getUserInput()
+        {
+            Console.WriteLine("Please enter a URL to begin the crawl from.");
+            root = Console.ReadLine();
+            getMaxDepth();
+            
+        }
+
+        public void getMaxDepth()
+        {
+            Console.WriteLine("What is the maximum depth to crawl to? (1 - 10)");
+            try
+            {
+                int depth = Convert.ToInt32(Console.ReadLine());
+                if(depth > 10 || depth < 1)
+                {
+                    Console.WriteLine("The depth must be between 1 and 10.");
+                    getMaxDepth();
+                }
+                else
+                {
+                    maxDepth = depth;
+                }
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("The depth has to be an integer.");
+                getMaxDepth();
+            }
         }
 
     }
