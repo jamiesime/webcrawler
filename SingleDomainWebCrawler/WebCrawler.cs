@@ -55,6 +55,7 @@ namespace SingleDomainWebCrawler
                 }
                 else
                 {
+                    visitedUrls.Add(url);
                     return doc;
                 }
             }
