@@ -42,6 +42,10 @@
       <HintPath>..\packages\HtmlAgilityPack.1.8.1\lib\Net45\HtmlAgilityPack.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="RobotsTxt, Version=1.0.5163.29496, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RobotsTxt.2014.02.19\lib\RobotsTxt.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
   </ItemGroup>

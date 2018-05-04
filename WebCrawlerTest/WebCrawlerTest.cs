@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SingleDomainWebCrawler;
 using HtmlAgilityPack;
+using RobotsTxt;
 
 namespace WebCrawlerTest
 {
@@ -100,5 +101,20 @@ namespace WebCrawlerTest
             //Assert
             Assert.AreEqual(true, crawler.verifyResponse(crawler.root, doc));
         }
+
+        /*
+        [TestMethod]
+        public void loadRobotsText()
+        {
+            //Arrange
+            WebCrawler crawler = new WebCrawler("https://caseblocks.com/", 1);
+            //Act
+            Robots robots = crawler.loadRobots();
+            //Assert
+            Assert.IsNotNull(robots);
+            Assert.IsTrue(robots.IsAnyPathDisallowed);
+            //Assert.IsTrue(robots.HasRules);
+        }
+        */
     }
 }

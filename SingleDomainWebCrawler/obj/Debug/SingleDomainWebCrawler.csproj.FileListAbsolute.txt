@@ -7,3 +7,5 @@ C:\Users\Jamie\Desktop\Repos\SingleDomainWebCrawler\SingleDomainWebCrawler\bin\D
 C:\Users\Jamie\Desktop\Repos\SingleDomainWebCrawler\SingleDomainWebCrawler\bin\Debug\SingleDomainWebCrawler.exe
 C:\Users\Jamie\Desktop\Repos\SingleDomainWebCrawler\SingleDomainWebCrawler\obj\Debug\SingleDomainWebCrawler.exe
 C:\Users\Jamie\Desktop\Repos\SingleDomainWebCrawler\SingleDomainWebCrawler\obj\Debug\SingleDomainWebCrawler.csprojResolveAssemblyReference.cache
+C:\Users\Jamie\Desktop\Repos\SingleDomainWebCrawler\SingleDomainWebCrawler\bin\Debug\RobotsTxt.dll
+C:\Users\Jamie\Desktop\Repos\SingleDomainWebCrawler\SingleDomainWebCrawler\bin\Debug\RobotsTxt.xml

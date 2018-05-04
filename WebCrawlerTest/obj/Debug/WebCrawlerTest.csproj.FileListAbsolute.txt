@@ -8,3 +8,5 @@ C:\Users\Jamie\Desktop\Repos\SingleDomainWebCrawler\WebCrawlerTest\bin\Debug\Htm
 C:\Users\Jamie\Desktop\Repos\SingleDomainWebCrawler\WebCrawlerTest\bin\Debug\HtmlAgilityPack.pdb
 C:\Users\Jamie\Desktop\Repos\SingleDomainWebCrawler\WebCrawlerTest\bin\Debug\HtmlAgilityPack.xml
 C:\Users\Jamie\Desktop\Repos\SingleDomainWebCrawler\WebCrawlerTest\bin\Debug\SingleDomainWebCrawler.exe
+C:\Users\Jamie\Desktop\Repos\SingleDomainWebCrawler\WebCrawlerTest\bin\Debug\RobotsTxt.dll
+C:\Users\Jamie\Desktop\Repos\SingleDomainWebCrawler\WebCrawlerTest\bin\Debug\RobotsTxt.xml

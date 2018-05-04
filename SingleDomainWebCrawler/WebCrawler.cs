@@ -4,26 +4,28 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using HtmlAgilityPack;
+using RobotsTxt;
+using System.Net;
 
 namespace SingleDomainWebCrawler
 {
     public class WebCrawler
     {
 
-        public string root;
-        public string currentUrl;
-        public string currentStatCode;
-        public int maxDepth;
-        public Int32 pagesCrawled;
+        public string root { get;  private set; }
+        public string currentUrl { get; private set; }
+        public string currentStatCode { get; private set; }
+        public int maxDepth { get; private set; }
+        public Int32 pagesCrawled { get; private set; }
 
-        public HtmlWeb web;
+        private HtmlWeb web;
 
-        public Queue<string> currentDepthQueue = new Queue<string>();
-        public Queue<string> nextDepthQueue = new Queue<string>();
+        public Queue<string> currentDepthQueue { get; private set; } = new Queue<string>();
+        public Queue<string> nextDepthQueue { get; private set; } = new Queue<string>();
 
-        public List<string> visitedUrls = new List<string>();
+        public List<string> visitedUrls { get; private set; } = new List<string>(); 
 
-        public CSVOutput csvFile = new CSVOutput("C:/Users/Jamie/Desktop");
+        public CSVOutput csvFile { get; private set; } = new CSVOutput("C:/Users/Jamie/Desktop");
 
         public WebCrawler()
         {
@@ -165,7 +167,7 @@ namespace SingleDomainWebCrawler
             }
             else
             {
-                Console.WriteLine("Not a valid URL. Press any key to close.");
+                Console.WriteLine("Not a valid URL. Press any key to exit.");
                 Console.ReadLine();
             }
         }
@@ -200,6 +202,19 @@ namespace SingleDomainWebCrawler
                 getMaxDepth();
             }
         }
+
+        /* nuget package isn't working, redo with regex
+        public Robots loadRobots()
+        {
+            string robotsUri = @"" + root + "/robots.txt";
+            string fileName = @"C:/Users/Jamie/Desktop/robots.txt";
+            WebClient client = new WebClient();
+            client.DownloadFile(robotsUri, fileName);
+            client.UseDefaultCredentials = true;
+            Robots robots = Robots.Load("C:/Users/Jamie/Desktop/robots.txt");
+            return robots;
+        }
+        */
 
     }
 }
